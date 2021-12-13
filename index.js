@@ -18,6 +18,7 @@ mongoose
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
+
 app.use("/api/users", usersRoute);
 
 app.listen(8800, () => {
