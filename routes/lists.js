@@ -1,14 +1,14 @@
 const router = require("express").Router();
-const List = require("../models/List");
+const List = require("../models/Lists");
 const verify = require("../verifyToken");
 
 //CREATE
 router.post("/", verify, async (req, res) => {
   if (req.user.isAdmin) {
-    const newMovie = new req.body();
+    const newList = new List(req.body);
     try {
-      const savedMovie = await newMovie.save();
-      res.status(201).json(savedMovie);
+      const savedList = await newList.save();
+      res.status(201).json(savedList);
     } catch (err) {
       res.status(500).json(err);
     }
